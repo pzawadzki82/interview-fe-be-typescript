@@ -3,7 +3,7 @@ import './app.css';
 import ProductsList from './Products/ProductsList';
 
 const App = () => (
-    <div>
+    <div className="container">
         <ProductsList />
     </div>
 )
