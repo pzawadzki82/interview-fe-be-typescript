@@ -2,12 +2,16 @@ const { getNewProduct } = require('./services/dataProvider')
 
 const products = []
 
-const addProduct = (product) => {
-    const productToSave = {
+const updateGrossValue = (product) => {
+    return {
         ...product,
-        id: products.length + 1,
+        priceWithTax: product.price * 1.2
     }
+}
 
+const addProduct = (product) => {
+    productToSave = updateGrossValue(product)
+    product.id = products.length + 1,
     products.push(productToSave)
 
     return productToSave

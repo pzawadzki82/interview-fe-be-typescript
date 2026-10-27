@@ -24,6 +24,14 @@ app.get('/api/getProducts', async (req, res) => {
     res.send(getProducts())
 })
 
+app.post('/api/addProduct', async (req, res) => {
+    const newProduct = addProduct(getNewProduct())
+
+    await queueService.sendMessage('NEW_PRODUCT', { product: newProduct })
+
+    res.sendStatus(200)
+})
+
 app.post('/queue/subscribe', (req, res) => {
     queue.subscribe(req.body.listener)
     res.sendStatus(200)
